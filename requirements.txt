@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sqlalchemy
+aiosqlite
+jinja2
+python-multipart
+apscheduler
+lunarcalendar
+requests

@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">Add Birthday</div>
+            <div class="card-body">
+                <form action="/add" method="post" id="addForm">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date of Birth</label>
+                        <input type="date" class="form-control" name="date_str" required>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" name="is_lunar" id="is_lunar" value="true">
+                        <label class="form-check-label" for="is_lunar">Lunar Date?</label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Reminders</label>
+                        <div id="reminders-container">
+                            <!-- Reminders will be added here -->
+                        </div>
+                        <button type="button" class="btn btn-sm btn-secondary mt-2" onclick="addReminder()">+ Add
+                            Reminder</button>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email (Optional)</label>
+                        <input type="email" class="form-control" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Note</label>
+                        <textarea class="form-control" name="note"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">Upcoming Birthdays</div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Next Birthday</th>
+                            <th>Days Left</th>
+                            <th>Type</th>
+                            <th>Reminders</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for b in birthdays %}
+                        <tr
+                            class="{% if b.days_left == 0 %}table-success{% elif b.days_left <= 7 %}table-warning{% endif %}">
+                            <td>{{ b.name }}</td>
+                            <td>{{ b.next_birthday }}</td>
+                            <td><strong>{{ b.days_left }}</strong></td>
+                            <td>{% if b.is_lunar %}🌙 Lunar{% else %}☀️ Gregorian{% endif %}</td>
+                            <td>
+                                <ul class="list-unstyled mb-0">
+                                    {% for r in b.reminders %}
+                                    <li><small>{{ r.days_before }} days before at {{ r.time }}</small></li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>
+                                <form action="/delete/{{ b.id }}" method="post" onsubmit="return confirm('Delete?');">
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let reminderCount = 0;
+    function addReminder() {
+        if (reminderCount >= 3) return;
+
+        const container = document.getElementById('reminders-container');
+        const div = document.createElement('div');
+        div.className = 'input-group mb-2';
+        div.innerHTML = `
+            <span class="input-group-text">Days Before</span>
+            <input type="number" class="form-control" name="reminders_days[]" value="0" min="0">
+            <span class="input-group-text">Time</span>
+            <input type="time" class="form-control" name="reminders_time[]" value="09:00">
+            <button type="button" class="btn btn-outline-danger" onclick="this.parentElement.remove(); reminderCount--;">X</button>
+        `;
+        container.appendChild(div);
+        reminderCount++;
+    }
+    // Add one default reminder
+    addReminder();
+</script>
+{% endblock %}
