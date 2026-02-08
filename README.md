@@ -1,10 +1,6 @@
 # 🥳 Birthday Calendar & Reminder (生日日历与提醒)
 
 这是一个基于 FastAPI 构建的生日日历和提醒应用程序，支持公历和农历生日，并通过企业微信机器人发送提醒。它提供了一个简单的 Web 界面来管理生日信息。
-<img width="2160" height="1308" alt="image" src="https://github.com/user-attachments/assets/db912462-bd36-4974-9727-61d64f3153fe" />
-<img width="1284" height="329" alt="image" src="https://github.com/user-attachments/assets/189434a1-2bd6-4204-9b0e-7bf54c50481a" />
-![a2ed8902856bc0639fe6e396eafc01d1](https://github.com/user-attachments/assets/76245c7f-bf5e-4b68-bc62-2b54b17c3407)
-
 
 ## 1 ✨ 功能特性
 
@@ -14,6 +10,9 @@
 *   **企业微信通知：** 通过配置企业微信群机器人 Webhook URL，在生日到来时自动发送通知。
 *   **Web 用户界面：** 直观的网页界面，方便用户操作。
 *   **Docker 化部署：** 提供 `Dockerfile` 和 `docker-compose.yml`，简化部署流程。
+<img width="2160" height="1308" alt="image" src="https://github.com/user-attachments/assets/db912462-bd36-4974-9727-61d64f3153fe" />
+<img width="1284" height="329" alt="image" src="https://github.com/user-attachments/assets/189434a1-2bd6-4204-9b0e-7bf54c50481a" />
+![a2ed8902856bc0639fe6e396eafc01d1](https://github.com/user-attachments/assets/76245c7f-bf5e-4b68-bc62-2b54b17c3407)
 
 ## 2 🚀 技术栈
 
