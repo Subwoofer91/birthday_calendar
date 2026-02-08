@@ -12,7 +12,7 @@
 *   **Docker 化部署：** 提供 `Dockerfile` 和 `docker-compose.yml`，简化部署流程。
 <img width="2160" height="1308" alt="image" src="https://github.com/user-attachments/assets/db912462-bd36-4974-9727-61d64f3153fe" />
 <img width="1284" height="329" alt="image" src="https://github.com/user-attachments/assets/189434a1-2bd6-4204-9b0e-7bf54c50481a" />
-![a2ed8902856bc0639fe6e396eafc01d1](https://github.com/user-attachments/assets/76245c7f-bf5e-4b68-bc62-2b54b17c3407)
+<img width="1264" height="464" alt="image" src="https://github.com/user-attachments/assets/ff4b11bc-8f69-4c91-a767-75024485858c" />
 
 ## 2 🚀 技术栈
 
